@@ -1,3 +1,5 @@
+import math
+
 class Vector(object):
     def __init__(self, coordinates):
         try:
@@ -40,6 +42,13 @@ class Vector(object):
         for x in self.coordinates:
             new_coordinaes.append(x * s)
         return Vector(new_coordinaes)
+
+    def magnitude(self):
+        sq = [f*f for f in self.coordinates]
+        return math.sqrt(sum(sq))
+    
+    def direction(self):
+        return self.scalar_multiply(1/self.magnitude())
     
     def __str__(self):
         return 'Vector: {}'.format(self.coordinates)
@@ -58,6 +67,28 @@ def main():
     print (v1.sub(v2))
     v1 = Vector([1.671,-1.012,-0.318])
     print (v1.scalar_multiply(7.41))
+
+    v1 = Vector([8.218,-9.341])
+    print (v1.magnitude())
+    print (v1.direction())
+
+    print('second')
+    v1 = Vector([-0.221,7.437])
+    print (v1.magnitude())
+    print (v1.direction())
+
+    v1 = Vector([8.813,-1.331,-6.247])
+    print (v1.magnitude())
+    print (v1.direction())
+
+    v1 = Vector([5.581,-2.136])
+    print (v1.magnitude())
+    print (v1.direction())
+
+    v1 = Vector([1.996,3.108,-4.554])
+    print (v1.magnitude())
+    print (v1.direction())
+    
     print ('completed')
 		
 if __name__ == "__main__":
